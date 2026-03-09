@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>خزنة العيد</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+margin-top:100px;
+overflow:hidden;
+}
+
+input{
+font-size:20px;
+padding:10px;
+text-align:center;
+}
+
+button{
+padding:10px 20px;
+font-size:18px;
+margin-top:10px;
+cursor:pointer;
+}
+
+.money{
+position:absolute;
+font-size:32px;
+animation:
+fall 4s ease-out forwards,
+float 3s ease-in-out infinite 4s,
+spin 4s linear forwards,
+shine 1s infinite alternate;
+}
+
+@keyframes fall{
+0%{top:-50px;opacity:0;}
+100%{top:70vh;opacity:1;}
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+@keyframes shine{
+0%{filter:brightness(1);}
+100%{filter:brightness(1.6);}
+}
+
+footer{
+position:fixed;
+bottom:10px;
+width:100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🔐 خزنة العيد</h1>
+<p>ادخل الرمز للحصول على عيديتك</p>
+
+<input id="code" placeholder="ادخل الرمز">
+<br>
+<button onclick="check()">فتح الخزنة</button>
+
+<h2 id="msg"></h2>
+
+<footer>صنعته رهف</footer>
+
+<audio id="sound">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2c0e8e8d2a.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function check(){
+
+let code=document.getElementById("code").value;
+
+if(code=="2026"){
+
+document.getElementById("msg").innerHTML="🎉 انفتحت الخزنة! هذه عيديتك";
+
+document.getElementById("sound").play();
+
+for(let i=0;i<60;i++){
+
+let m=document.createElement("div");
+m.className="money";
+m.innerHTML="💰";
+
+m.style.left=Math.random()*window.innerWidth+"px";
+
+document.body.appendChild(m);
+
+}
+
+}
+
+else{
+
+document.getElementById("msg").innerHTML="❌ الرمز خاطئ";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
